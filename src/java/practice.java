@@ -1,9 +1,9 @@
 import java.util.*;
-/*
-Write a program that reads a number n <= 20 from the keyboard
-and prints the spiral of asterisks on the screen as shown below.
- */
 public class practice {
+    /*
+    Write a program that reads a number x and a character c from the keyboard.
+    The program outputs an empty square with the size x and border with character c.
+     */
     public static void program_print_empty_square(){
         Scanner scan = new Scanner (System.in);
         int x = scan.nextInt();
@@ -20,7 +20,10 @@ public class practice {
             System.out.println("");
         }
     }
-
+    /*
+    Write a program that reads a number n <= 20 from the keyboard
+    and prints the spiral of asterisks on the screen as shown below.
+     */
     public static void program_print_spiral_asterisks(){
         // Create row and col
         // to traverse rows and columns
