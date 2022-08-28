@@ -1,4 +1,9 @@
 import java.util.*;
+
+/*
+Write a program that reads a number x and a character c from the keyboard.
+The program outputs an empty square with the size x and border with character c.
+ */
 public class practice{
     public static void main(String[] args) {
         Scanner scan = new Scanner (System.in);
