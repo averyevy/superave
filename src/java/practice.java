@@ -22,6 +22,6 @@ public class practice{
         }
     }
     public static void main(String[] args) {
-        program_print_empty_square()
+        program_print_empty_square();
     }
 }
