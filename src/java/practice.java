@@ -1,10 +1,10 @@
 import java.util.*;
 public class practice {
-    /*
+    public static void program_print_empty_square(){
+        /*
     Write a program that reads a number x and a character c from the keyboard.
     The program outputs an empty square with the size x and border with character c.
      */
-    public static void program_print_empty_square(){
         Scanner scan = new Scanner (System.in);
         int x = scan.nextInt();
         String c = scan.next();
@@ -20,11 +20,11 @@ public class practice {
             System.out.println("");
         }
     }
-    /*
+    public static void program_print_spiral_asterisks(){
+        /*
     Write a program that reads a number n <= 20 from the keyboard
     and prints the spiral of asterisks on the screen as shown below.
      */
-    public static void program_print_spiral_asterisks(){
         // Create row and col
         // to traverse rows and columns
         Scanner scan = new Scanner(System.in);
@@ -121,9 +121,66 @@ public class practice {
             }
             System.out.println();
         }
-
-
     }
+    public static void program_print_maze_answer_accuracy(){
+        /*
+    You will be given a map of a maze and a path. Check if the path is a correct way to the exit.
+    You will start at position (1, 1), and exit is at (1, m - 1). An example maze of size (7, 6) is given below.
+    Starting and exit locations are shown as 'S' and 'E'. A path is shown with red color to the exit.
+    You will first read the size of the maze (n, m). Then the maze will be given; '#'s are walls, '.'s are empty locations.
+    The size of the maze will not be more than (20, 20). The path is given as a string composed of four different letters;
+    'l' means left, 'r' means right, 'u' means 'up', and 'd' means 'down'.
+    You will write 'Right path!' if the path leads to the exit from the starting location, otherwise write 'Wrong path!' on the screen.
+
+    Example input:
+    7 6
+    ######
+    #.#...
+    #.#..#
+    #..#.#
+    ##...#
+    #..#.#
+    ######
+    ddrdrruulurr
+    */
+
+        Scanner scan = new Scanner (System.in);
+        int n = scan.nextInt();
+        int m = scan.nextInt();
+        char[][] maze = new char [n][m];
+        for (int i=0; i<n; i++) {
+            String v = scan.next();
+            for (int j=0; j<m ; j++) {
+                maze[i][j] = v.charAt(j);
+            }
+        }
+        String path = scan.next();
+        int r = 1;
+        int c = 1;
+        int valid = 1;
+        for (int i=0; i < path.length(); i++) {
+            if (path.charAt(i) == 'd')
+                r++;
+            if (path.charAt(i) == 'u')
+                r--;
+            if (path.charAt(i) == 'r')
+                c++;
+            if (path.charAt(i) == 'l')
+                c--;
+            if (r==1 && c==m-1) {
+                if (i!=path.length()-1)
+                    valid = 0;
+                break;
+            }
+            if (maze[r][c] == '#') {
+                valid = 0;
+                break;
+            }
+        }
+        if (valid==1 && r==1 && c==m-1)
+            System.out.println("Right path!");
+        else
+            System.out.println("Wrong path!");
     public static void main(String[] args) {
         program_print_spiral_asterisks();
     }
