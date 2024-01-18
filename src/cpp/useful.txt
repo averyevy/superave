@@ -17,3 +17,50 @@ for (auto i: v)
     cout << i << ' ';
 cout << '\n';
 // prints "1 2 5 2"
+
+2. Input and store as 2d array
+4
+bird 2 flies eatsworms
+cow 4 eatsgrass isawesome makesmilk goesmoo
+sheep 1 eatsgrass
+goat 2 makesmilk eatsgrass
+
+vector<vector<string>> animals(N);
+
+for (int i = 0; i < N; ++i) {
+    string name;
+    cin >> name;
+    int K;
+    cin >> K;
+    for (int j = 0; j < K; ++j) {
+        string feature;
+        cin >> feature;
+        animals[i].push_back(feature);
+    }
+}
+print out: 
+for (int i = 0; i < N; ++i) {
+    for (const auto &feature : animals[i]) {
+      cout<<feature<<" ";
+	}
+	cout<<endl;
+}
+
+int greatest_common = 0;
+for (int i = 0; i < N; ++i) {
+        for( int j=i+1; j < N; j++) {
+            int common = 0;
+            //find the number of common elements in two array
+            for (const auto &feature1 : animals[i]) {
+                for (const auto &feature2 : animals[j]) {
+                    if (feature1 == feature2) {
+                        common++;
+                        break;
+                    }
+                }
+            }
+            greatest_common = max(greatest_common, common);
+        }
+    
+    }
+
