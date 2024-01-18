@@ -1,0 +1,2 @@
+zhenl@Zhens-MacBook-Pro:~$ metatron curl -a ndc -X POST "https://ndc.cluster.us-east-1.prod.cloud.netflix.net:8443/api/v0/sync/ndc?names=ndc://hive:prod:us-east-1/prodhive/policy_engine_test/zhenl_testing_20231020_part_1"
+zhenl@Zhens-MacBook-Pro:~$ metatron curl -a ndc -X POST "https://ndc.cluster.us-east-1.test.cloud.netflix.net:8443/api/v0/sync/ndc?names=ndc://hive:prod:us-east-1/prodhive/policy_engine_test/zhenl_testing_20231020_part_1"
