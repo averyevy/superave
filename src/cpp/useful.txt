@@ -1,2 +1,19 @@
-zhenl@Zhens-MacBook-Pro:~$ metatron curl -a ndc -X POST "https://ndc.cluster.us-east-1.prod.cloud.netflix.net:8443/api/v0/sync/ndc?names=ndc://hive:prod:us-east-1/prodhive/policy_engine_test/zhenl_testing_20231020_part_1"
-zhenl@Zhens-MacBook-Pro:~$ metatron curl -a ndc -X POST "https://ndc.cluster.us-east-1.test.cloud.netflix.net:8443/api/v0/sync/ndc?names=ndc://hive:prod:us-east-1/prodhive/policy_engine_test/zhenl_testing_20231020_part_1"
+1. Assign value by a pair of {} to a container
+
+pair<int, int> p;
+// ...
+p = {3, 4};
+even a more complex pair
+
+pair<int, pair<char, long long> > p;
+// ...
+p = {3, {'a', 8ll}};
+What about vector, deque, set and other containers?
+
+
+vector<int> v;
+v = {1, 2, 5, 2};
+for (auto i: v)
+    cout << i << ' ';
+cout << '\n';
+// prints "1 2 5 2"
