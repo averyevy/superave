@@ -64,3 +64,57 @@ for (int i = 0; i < N; ++i) {
     
     }
 
+3. Input chars as 2D arrays
+3 8
+AATCCCAT
+GATTGCAA
+GGTCGCAA
+ACTCCCAG
+ACTCGCAT
+ACTTCCAT
+
+If we know the upper bound, 
+char spotty[500][50], plain[500][50];
+set<string> exists;
+
+int N,M;
+cin >> N;
+cin >> M;
+
+for (int i = 0; i < N; i++) {
+	string feature;
+	cin >> feature;
+	for (int j = 0; j < M; j++) {
+		spotty[i][j] = feature[j];
+	}
+}
+
+char spotty[500][50], plain[500][50];
+set<string> exists;
+
+bool test(int j1, int j2, int j3, int N) {
+	bool good = true;
+
+	// mark the values in A used by a spotty cow
+	for (int i = 0; i < N; i++) {
+		string s ;
+		s +=  spotty[i][j1];
+		s += spotty[i][j2];
+		s += spotty[i][j3];
+		//cout << s << endl;
+		exists.insert(s);
+	};
+
+	// see if a plain cow has the same values as a spotty cow
+	for (int i = 0; i < N; i++) {
+		string s;
+		s +=  plain[i][j1];
+		s += plain[i][j2];
+		s += plain[i][j3];
+		if (exists.count(s)) good = false;
+
+	}
+	//check if a set has a string	
+	exists.clear();
+	return good;
+}
