@@ -28,6 +28,24 @@ for ( auto it = sick_milk.begin(); it != sick_milk.end(); it++ ) {
 	std::cout << *it;
 }
 
+map<int, vector<pair<int, int>>> data;
+//no need to check if key exists
+data[person].push_back({type, time});
+
+vector<pair<int, int>> data_p = data[person];
+for (const auto &feature : data_p) {
+cout<<feature.first<<" " << feature.second<<endl;
+}
+
+Iterate the map
+for (map<int, vector<pair<int, int>>>::iterator it=data.begin(); it!=data.end(); ++it) {
+	  int person = it->first;
+		vector<pair<int, int>> data_p = it->second;
+		for (const auto &feature : data_p) {
+			cout<<person<<":"<<feature.first<<"," << feature.second;
+		}
+		cout<<endl;
+  }
 
 2. Input and store as 2d array
 4
@@ -130,4 +148,9 @@ bool test(int j1, int j2, int j3, int N) {
 	return good;
 }
 
+5. IO
+#define IO(NAME) \
+    cin.tie(0)->sync_with_stdio(0); \
+    if(fopen(NAME ".in","r")) freopen(NAME ".in","r",stdin), \
+    freopen(NAME ".out","w",stdout); 
 
