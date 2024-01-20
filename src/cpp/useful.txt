@@ -18,6 +18,17 @@ for (auto i: v)
 cout << '\n';
 // prints "1 2 5 2"
 
+
+map<int, pair<int, int>> data;
+data.insert({person,{type, time}});
+cout << person <<":" << data[person].first << data[person].second << endl; 
+
+set<int> sick_milk;
+for ( auto it = sick_milk.begin(); it != sick_milk.end(); it++ ) {
+	std::cout << *it;
+}
+
+
 2. Input and store as 2d array
 4
 bird 2 flies eatsworms
@@ -118,3 +129,5 @@ bool test(int j1, int j2, int j3, int N) {
 	exists.clear();
 	return good;
 }
+
+
