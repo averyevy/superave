@@ -10,6 +10,8 @@ pair<int, pair<char, long long> > p;
 p = {3, {'a', 8ll}};
 What about vector, deque, set and other containers?
 
+//Initialize array as 0
+int person[100]={};
 
 vector<int> v;
 v = {1, 2, 5, 2};
@@ -154,3 +156,12 @@ bool test(int j1, int j2, int j3, int N) {
     if(fopen(NAME ".in","r")) freopen(NAME ".in","r",stdin), \
     freopen(NAME ".out","w",stdout); 
 
+6. struct and sort
+struct Event {
+	int ts;
+	int person1;
+	int person2;
+};
+std::sort( events.begin(), events.end(), [&](const Event &e1, const Event &e2) {
+		return e1.ts <= e2.ts;
+	});
