@@ -174,3 +174,21 @@ person = new int[N];
 
 8. unix command. show all files in one dir
 awk ' { print FILENAME $0 } ' *.in
+
+9 logging function
+#define log(args...) { string _s = #args; replace(_s.begin(), _s.end(), ',', ' '); \
+stringstream _ss(_s); istream_iterator<string> _it(_ss);  cout<< "LOG - line:" << __LINE__<< "      "; err(_it, args); cout <<endl;}
+
+void err(istream_iterator<string> it) {}
+template<typename T, typename... Args>
+void err(istream_iterator<string> it, T a, Args... args) {
+	cout << *it << " = " << a <<"; ";
+	err(++it, args...);
+}
+usage: log(mid, left);
+
+10. sort array
+int input[3] = {};
+cin >> input[0] >> input[1] >> input[2];
+//log(input[0] , input[1] , input[2]);
+sort(input, input+3);
