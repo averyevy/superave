@@ -165,3 +165,12 @@ struct Event {
 std::sort( events.begin(), events.end(), [&](const Event &e1, const Event &e2) {
 		return e1.ts <= e2.ts;
 	});
+
+7. Global variable 
+int* person;
+int main() {
+person = new int[N];
+}
+
+8. unix command. show all files in one dir
+awk ' { print FILENAME $0 } ' *.in
