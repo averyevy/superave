@@ -150,6 +150,21 @@ bool test(int j1, int j2, int j3, int N) {
 	return good;
 }
 
+Input matrix: 
+3 4
+4 1 2 3
+4 1 3 2
+4 2 1 3
+int K,N;
+cin >> K >> N;
+int dest[K][N] = {};
+for (int i = 0; i < K; ++i) {
+for (int j = 0; j < N; ++j) {
+    std::cin >> dest[i][j];
+    //cout << dest[i][j];
+}
+}
+
 5. IO
 #define IO(NAME) \
     cin.tie(0)->sync_with_stdio(0); \
