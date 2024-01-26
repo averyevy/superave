@@ -49,6 +49,10 @@ for (map<int, vector<pair<int, int>>>::iterator it=data.begin(); it!=data.end();
 		cout<<endl;
   }
 
+//Sort arrany in descending
+sort(arr, arr+N, [](int i, int j){return i>j;});
+	
+
 2. Input and store as 2d array
 4
 bird 2 flies eatsworms
