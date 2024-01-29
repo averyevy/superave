@@ -30,6 +30,15 @@ for ( auto it = sick_milk.begin(); it != sick_milk.end(); it++ ) {
 	std::cout << *it;
 }
 
+//print set elements and only with " " if not last test case.
+for (auto it = elements.begin(); it != --elements.end(); it++) {
+                cout<< (*it ) << " ";
+}
+cout<< *elements.end();
+if (last == false) {
+    cout << "\n";
+}
+
 map<int, vector<pair<int, int>>> data;
 //no need to check if key exists
 data[person].push_back({type, time});
