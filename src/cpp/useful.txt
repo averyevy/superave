@@ -288,3 +288,11 @@ for (int j = 0; j < M; j ++ ) {
 	//cout << field[i][j] <<" ";
 }
 }
+
+13. Sum of digits of #
+
+sum = i;
+while (x > 0) {
+	sum = sum + x%10;
+	x = x / 10;
+}
