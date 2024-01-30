@@ -1,3 +1,25 @@
+/*
+
+Input Functions (r family):
+
+The r functions are overloaded for various data types, handling input operations.
+For integers, there are special cases for both regular integers and __int128_t (a 128-bit integer type).
+For floating-point numbers, there's a special case that handles the precision.
+For characters, strings, and other types, there are dedicated functions.
+Output Functions (w family):
+
+The w functions are overloaded for various data types, handling output operations.
+For integers, there's special handling for negative numbers and conversion to strings.
+For floating-point numbers, there's special handling for precision and rounding.
+For vectors, there are functions to output vector elements with customizable separators and line breaks.
+Miscellaneous Functions:
+
+ss and sp functions are provided for changing the separator and precision settings.
+*/
+
+#include <bits/stdc++.h>
+using namespace std;
+
 #define forn(i, n) for (int i = 0; i < int(n); i++)
 #define fore(i, l, r) for (int i = int(l); i <= int(r); ++i)
 #define all(x) x.begin(),x.end()
