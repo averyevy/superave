@@ -9,7 +9,7 @@ int main() {
 	for (int x = 1; x <= n; x++) {
 		for (int y = 1; y <= n; y++) {
 			z = (x^y);
-			if (x <= y && y <= z) {
+			if (x <= y && y <= z && z <= n) {
 				if (x < y + z && y < x + z && z < x + y) {
 					count++;
 				}
