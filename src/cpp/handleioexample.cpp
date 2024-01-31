@@ -70,6 +70,11 @@ void solve(){
     io.wl();
     forn(i,n) io.ww(v[i].se);
     io.wl();
+    
+    //input output vector
+    vi c;
+    forn(i,k){ int t; io.r(t); c.push_back(t); };
+    forn(i,k){io.ww(c[i]);}
 }
  
 int main() {
