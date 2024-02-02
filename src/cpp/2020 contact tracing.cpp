@@ -1,4 +1,5 @@
-
+// http://www.usaco.org/index.php?page=viewproblem2&cpid=1037
+// how to simulate the handshaking process
 #include <bits/stdc++.h>
 using namespace std;
 #define forn(i, n) for (int i = 0; i < int(n); i++)
