@@ -1,0 +1,91 @@
+
+#include <bits/stdc++.h>
+using namespace std;
+#define forn(i, n) for (int i = 0; i < int(n); i++)
+
+typedef long long ll;
+typedef vector<int> vi;
+typedef pair<int, int> pii;
+  
+#define mp make_pair
+#define pb push_back
+#define f first
+#define s second
+#define lb lower_bound
+#define ub upper_bound
+ 
+const int MOD = 1000000007;
+double PI = 4*atan(1);
+ 
+#define IO(NAME) \
+    cin.tie(0)->sync_with_stdio(0); \
+    if(fopen(NAME ".in","r")) freopen(NAME ".in","r",stdin), \
+    freopen(NAME ".out","w",stdout); 
+
+
+template<template <typename> class P = std::less > 
+struct compare_pair_second { 
+    template<class T1, class T2> bool operator()(const std::pair<T1, T2>& left, const std::pair<T1, T2>& right) {
+        return P<T2>()(left.second, right.second);
+    }
+};
+  
+#define log(args...) { string _s = #args; replace(_s.begin(), _s.end(), ',', ' '); \
+stringstream _ss(_s); istream_iterator<string> _it(_ss);  cout<< "LOG - line:" << __LINE__<< "      "; err(_it, args); cout <<endl;}
+void err(istream_iterator<string> it) {}
+template<typename T, typename... Args>
+void err(istream_iterator<string> it, T a, Args... args) {
+	cout << *it << " = " << a <<"; ";
+	err(++it, args...);
+}
+
+bool check123(int c1, int c2 ) {
+    if ( ( c1 == 1 && c2 == 2 ) 
+        || ( c1 == 2 && c2 == 3 )
+        || ( c1 == 3 && c2 == 1 ))
+    {
+         return true;
+    }
+    return false;
+}
+
+bool check132(int c1, int c2 ) {
+    if ( ( c1 == 1 && c2 == 3 ) 
+        || ( c1 == 3 && c2 == 2 )
+        || ( c1 == 2 && c2 == 1 ))
+    {
+         return true;
+    }
+    return false;
+}
+
+int main() {
+    IO("hps");
+    int N;
+    cin>>N;
+    vector<pair<int,int>> C1;
+    
+    for(int i=0;i<N;i++) {
+        int c1, c2;
+        cin>>c1>>c2;
+        if ( c1 != c2 ) {
+            C1.pb(mp(c1,c2));
+        }
+    }
+    //the permutation can separate into 2 group
+    //1 -> 2 -> 3 -> 1
+    //1 -> 3 -> 2
+    sort(C1.begin(), C1.end());
+    int c123 = 0, c132=0; 
+    for ( int i = 0; i < C1.size(); i ++ ) {
+        if ( check123(C1[i].f, C1[i].s ) ) {
+            c123++;
+        };
+        if ( check132(C1[i].f, C1[i].s ) ) {
+            c132++;
+        }
+    }
+    cout << max(c123, c132);
+
+    return 0;
+}
