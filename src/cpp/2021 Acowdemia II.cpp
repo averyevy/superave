@@ -35,6 +35,8 @@ int main() {
     for(int x=0;x<K;x++) {
       bool alphaOrder = true;
       for(int y=x+1;y<K;y++) {
+        //this is a pairwise comparsion, don't use cur[x] > cur[y]
+        //a a more senior researcher never puts in more effort than a more junior researcher.
         if (cur[y-1]>(cur[y]) ) {
           alphaOrder = false;
         }
