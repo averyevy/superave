@@ -101,3 +101,61 @@ for (int xPour = 0; xPour * x <= m; xPour++) {
     }
 }
 ```
+
+
+## [2022 Hiding Bessie](http://usaco.org/index.php?page=viewproblem2&cpid=1228)
+
+The problem involves determining the minimum number of cows that must be lying about the hiding location of Bessie on the number line. Each cow provides information whether Bessie's location is greater than or equal to or less than or equal to a certain point. The goal is to count the minimum number of cows whose statements cannot all be true.
+
+**Input:**
+- The first line contains the number of cows, N.
+- The next N lines contain the statements of each cow, either "L" (Bessie's location is less than or equal to a point) or "G" (Bessie's location is greater than or equal to a point), followed by an integer pi.
+
+**Output:**
+- The minimum number of cows that must be lying.
+
+**Example:**
+**Input:**
+2
+G 3
+L 5
+
+**Output:**
+0
+
+Explanation: It is possible that no cow is lying.
+
+**Input:**
+2
+G 3
+L 2
+
+**Output:**
+1
+
+Explanation: At least one of the cows must be lying.
+```cpp
+vector<pair<int, char>> inputs(N);
+    int minliars = N;
+    for(int i=0; i<N; i++) {
+        char c; int t;
+        cin >> c >> t;
+        inputs[i] = {t, c};
+    }
+    std::sort(inputs.begin(), inputs.end()); 
+    for (int i = 0; i < N; i ++) {
+        int liars = 0;   
+        for ( int j = i+1; j < N; j ++) {
+            if ( inputs[j].second == 'G' ) {
+                liars++;
+            }
+        }
+        for ( int j = 0; j < i; j ++) {
+            if ( inputs[j].second == 'L' ) {
+                liars++;
+            }
+        }
+        minliars = min(minliars, liars);
+    }
+    cout<< minliars;
+```
