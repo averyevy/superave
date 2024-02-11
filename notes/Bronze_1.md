@@ -134,6 +134,8 @@ L 2
 1
 
 Explanation: At least one of the cows must be lying.
+**The key part is to use the pair data structure, the first pi to sort**
+
 ```cpp
 vector<pair<int, char>> inputs(N);
     int minliars = N;
@@ -142,7 +144,7 @@ vector<pair<int, char>> inputs(N);
         cin >> c >> t;
         inputs[i] = {t, c};
     }
-    //The key part is to use the pair data structure, the first pi to sort
+    
     std::sort(inputs.begin(), inputs.end()); 
     for (int i = 0; i < N; i ++) {
         int liars = 0;   
