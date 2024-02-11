@@ -103,7 +103,7 @@ for (int xPour = 0; xPour * x <= m; xPour++) {
 ```
 
 
-## [2022 Hiding Bessie](http://usaco.org/index.php?page=viewproblem2&cpid=1228)
+## [2022 Counting Liars](http://usaco.org/index.php?page=viewproblem2&cpid=1228)
 
 The problem involves determining the minimum number of cows that must be lying about the hiding location of Bessie on the number line. Each cow provides information whether Bessie's location is greater than or equal to or less than or equal to a certain point. The goal is to count the minimum number of cows whose statements cannot all be true.
 
