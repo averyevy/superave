@@ -142,6 +142,7 @@ vector<pair<int, char>> inputs(N);
         cin >> c >> t;
         inputs[i] = {t, c};
     }
+    //The key part is to use the pair data structure, the first pi to sort
     std::sort(inputs.begin(), inputs.end()); 
     for (int i = 0; i < N; i ++) {
         int liars = 0;   
