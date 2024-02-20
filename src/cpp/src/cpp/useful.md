@@ -1,1 +1,316 @@
 
+1. Assign value by a pair of {} to a container
+
+pair<int, int> p;
+// ...
+p = {3, 4};
+even a more complex pair
+
+pair<int, pair<char, long long> > p;
+// ...
+p = {3, {'a', 8ll}};
+What about vector, deque, set and other containers?
+
+//Initialize array as 0
+int person[100]={};
+
+vector<int> v;
+v = {1, 2, 5, 2};
+for (auto i: v)
+    cout << i << ' ';
+cout << '\n';
+// prints "1 2 5 2"
+
+
+map<int, pair<int, int>> data;
+data.insert({person,{type, time}});
+cout << person <<":" << data[person].first << data[person].second << endl; 
+
+set<int> sick_milk;
+for ( auto it = sick_milk.begin(); it != sick_milk.end(); it++ ) {
+	std::cout << *it;
+}
+
+//print set elements and only with " " if not last test case.
+for (auto it = elements.begin(); it != --elements.end(); it++) {
+                cout<< (*it ) << " ";
+}
+cout<< *elements.end();
+if (last == false) {
+    cout << "\n";
+}
+
+map<int, vector<pair<int, int>>> data;
+//no need to check if key exists
+data[person].push_back({type, time});
+
+vector<pair<int, int>> data_p = data[person];
+for (const auto &feature : data_p) {
+cout<<feature.first<<" " << feature.second<<endl;
+}
+
+Iterate the map
+for (map<int, vector<pair<int, int>>>::iterator it=data.begin(); it!=data.end(); ++it) {
+	  int person = it->first;
+		vector<pair<int, int>> data_p = it->second;
+		for (const auto &feature : data_p) {
+			cout<<person<<":"<<feature.first<<"," << feature.second;
+		}
+		cout<<endl;
+  }
+
+//Sort arrany in descending
+sort(arr, arr+N, [](int i, int j){return i>j;});
+	
+
+2. Input and store as 2d array
+4
+bird 2 flies eatsworms
+cow 4 eatsgrass isawesome makesmilk goesmoo
+sheep 1 eatsgrass
+goat 2 makesmilk eatsgrass
+
+vector<vector<string>> animals(N);
+
+for (int i = 0; i < N; ++i) {
+    string name;
+    cin >> name;
+    int K;
+    cin >> K;
+    for (int j = 0; j < K; ++j) {
+        string feature;
+        cin >> feature;
+        animals[i].push_back(feature);
+    }
+}
+print out: 
+for (int i = 0; i < N; ++i) {
+    for (const auto &feature : animals[i]) {
+      cout<<feature<<" ";
+	}
+	cout<<endl;
+}
+
+int greatest_common = 0;
+for (int i = 0; i < N; ++i) {
+        for( int j=i+1; j < N; j++) {
+            int common = 0;
+            //find the number of common elements in two array
+            for (const auto &feature1 : animals[i]) {
+                for (const auto &feature2 : animals[j]) {
+                    if (feature1 == feature2) {
+                        common++;
+                        break;
+                    }
+                }
+            }
+            greatest_common = max(greatest_common, common);
+        }
+    
+    }
+
+3. Input chars as 2D arrays
+3 8
+AATCCCAT
+GATTGCAA
+GGTCGCAA
+ACTCCCAG
+ACTCGCAT
+ACTTCCAT
+
+If we know the upper bound, 
+char spotty[500][50], plain[500][50];
+set<string> exists;
+
+int N,M;
+cin >> N;
+cin >> M;
+
+for (int i = 0; i < N; i++) {
+	string feature;
+	cin >> feature;
+	for (int j = 0; j < M; j++) {
+		spotty[i][j] = feature[j];
+	}
+}
+
+char spotty[500][50], plain[500][50];
+set<string> exists;
+
+bool test(int j1, int j2, int j3, int N) {
+	bool good = true;
+
+	// mark the values in A used by a spotty cow
+	for (int i = 0; i < N; i++) {
+		string s ;
+		s +=  spotty[i][j1];
+		s += spotty[i][j2];
+		s += spotty[i][j3];
+		//cout << s << endl;
+		exists.insert(s);
+	};
+
+	// see if a plain cow has the same values as a spotty cow
+	for (int i = 0; i < N; i++) {
+		string s;
+		s +=  plain[i][j1];
+		s += plain[i][j2];
+		s += plain[i][j3];
+		if (exists.count(s)) good = false;
+
+	}
+	//check if a set has a string	
+	exists.clear();
+	return good;
+}
+
+Input matrix: 
+3 4
+4 1 2 3
+4 1 3 2
+4 2 1 3
+int K,N;
+cin >> K >> N;
+int dest[K][N] = {};
+for (int i = 0; i < K; ++i) {
+for (int j = 0; j < N; ++j) {
+    std::cin >> dest[i][j];
+    //cout << dest[i][j];
+}
+}
+
+5. IO
+#define IO(NAME) \
+    cin.tie(0)->sync_with_stdio(0); \
+    if(fopen(NAME ".in","r")) freopen(NAME ".in","r",stdin), \
+    freopen(NAME ".out","w",stdout); 
+
+6. struct and sort
+struct Event {
+	int ts;
+	int person1;
+	int person2;
+};
+std::sort( events.begin(), events.end(), [&](const Event &e1, const Event &e2) {
+		return e1.ts <= e2.ts;
+	});
+
+7. Global variable 
+int* person;
+int main() {
+person = new int[N];
+}
+
+8. unix command. show all files in one dir
+awk ' { print FILENAME $0 } ' *.in
+
+9 logging function
+#define log(args...) { string _s = #args; replace(_s.begin(), _s.end(), ',', ' '); \
+stringstream _ss(_s); istream_iterator<string> _it(_ss);  cout<< "LOG - line:" << __LINE__<< "      "; err(_it, args); cout <<endl;}
+
+void err(istream_iterator<string> it) {}
+template<typename T, typename... Args>
+void err(istream_iterator<string> it, T a, Args... args) {
+	cout << *it << " = " << a <<"; ";
+	err(++it, args...);
+}
+usage: log(mid, left);
+
+10. sort array
+int input[3] = {};
+cin >> input[0] >> input[1] >> input[2];
+//log(input[0] , input[1] , input[2]);
+sort(input, input+3);
+
+11. Check the array in order from back 
+for (int i = N - 2; i >= 0; i--) {
+	if (a[i] < a[i + 1]) {
+		answer = i;
+		count ++;
+	} else {
+		break;
+	}
+}
+11. summary of array
+#define a_macro(args...) sum(args)
+int sum() { return 0; }
+template<typename T, typename... Args>
+auto sum(T a, Args... args) { return a + sum(args...); }
+
+12. maze solver with path recorded
+int N,M,K,D;
+
+int** field;
+bool** vis, solved;
+vector<pair<int,int> > SolutionCoors;
+void dfs(int r, int c)
+{   
+    if ( (r == (N -1) ) && ( c == (M-1))){
+            //cout << "solved" << endl;
+            solved = true;		
+        }
+	else if ( r >= 0 && r < N && c >=0 && c < M && !solved) {
+        SolutionCoors.push_back({r,c});
+        if (field[r][c] == 0 ) { 
+			field[r][c] = 3;
+            //vis[r][c] = true;
+            dfs(r + 1, c);
+            dfs(r - 1, c);
+            dfs(r, c - 1);
+            dfs(r, c + 1);
+        }
+        
+	if (!solved) {
+		SolutionCoors.pop_back();
+	}
+    }
+}
+
+int main() {
+cin >> N >> M >> K >> D;
+
+field = new int*[N];
+vis = new bool*[N];
+for(int i = 0; i < N; ++i) {
+	field[i] = new int[M];
+}
+}
+//input the maze
+for ( int i = 0 ; i < N; i ++ ) {
+string s;
+cin >> s;
+for (int j = 0; j < M; j ++ ) {
+	if ( s[j] == '.') {
+		field[i][j] = 0;
+	}
+	else {
+		field[i][j] = 1;
+	}
+	//cout << field[i][j] <<" ";
+}
+}
+
+13. Sum of digits of #
+
+sum = i;
+while (x > 0) {
+	sum = sum + x%10;
+	x = x / 10;
+}
+
+14. data type. 
+| Type                        | Range (Powers of 2)                                  | Range (Powers of 10)                                      |
+|-----------------------------|------------------------------------------------------|-----------------------------------------------------------|
+| `signed char`               | \( -2^7 \) to \( 2^7 - 1 \)                          | \( -10^2 \) to \( 10^2 - 1 \)                               |
+| `short` or `short int`      | \( -2^{15} \) to \( 2^{15} - 1 \)                    | \( -10^4 \) to \( 10^4 - 1 \)                               |
+| `int`                       | \( -2^{31} \) to \( 2^{31} - 1 \)                    | \( -10^9 \) to \( 10^9 - 1 \)                               |
+| `long` or `long int`        | \( -2^{31} \) to \( 2^{31} - 1 \) (or \( -2^{63} \) to \( 2^{63} - 1 \) on some systems) | \( -10^9 \) to \( 10^9 - 1 \) or \( -10^{18} \) to \( 10^{18} - 1 \) on some systems |
+| `long long` or `long long int` | \( -2^{63} \) to \( 2^{63} - 1 \)                    | \( -10^{18} \) to \( 10^{18} - 1 \)                         |
+
+| Type                        | Range (Powers of 2)                                  | Range (Powers of 10)                                      |
+|-----------------------------|------------------------------------------------------|-----------------------------------------------------------|
+| `unsigned char`             | \( 0 \) to \( 2^8 - 1 \)                            | \( 0 \) to \( 10^2 - 1 \)                                  |
+| `unsigned short` or `unsigned short int` | \( 0 \) to \( 2^{16} - 1 \)           | \( 0 \) to \( 10^4 - 1 \)                                  |
+| `unsigned int`              | \( 0 \) to \( 2^{32} - 1 \)                           | \( 0 \) to \( 10^9 - 1 \)                                  |
+| `unsigned long` or `unsigned long int` | \( 0 \) to \( 2^{32} - 1 \) (or \( 0 \) to \( 2^{64} - 1 \) on some systems) | \( 0 \) to \( 10^9 - 1 \) or \( 0 \) to \( 10^{18} - 1 \) on some systems |
+| `unsigned long long` or `unsigned long long int` | \( 0 \) to \( 2^{64} - 1 \)       | \( 0 \) to \( 10^{18} - 1 \)                               |
