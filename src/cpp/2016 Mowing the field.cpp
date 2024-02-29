@@ -44,7 +44,7 @@ int main() {
     IO("mowing");
     int N;
     cin >> N;
-   
+    //The key part is to ensure the array within 2000 as the longest travelling time is 1001
     int P[2000][2000];
     forn(i,2000)
     forn(j,2000)
