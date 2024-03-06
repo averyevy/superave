@@ -56,3 +56,60 @@ int main() {
     cout<<endl;
   }
 }
+
+
+/***solution2**/
+void solve() {
+	int K,N;
+    cin >> K >> N;
+    string people[N+1];
+    map<string,int> index;
+    for(int i=1;i<N+1;i++) { 
+        string s;
+        cin >> s;
+        people[i] = s;
+        index[s] = i; 
+    }
+    string paper[K][N+1];
+    
+    for(int k=0;k<K;k++) {
+        for(int i=1;i<N+1;i++) {
+            cin>>paper[k][i];
+        }
+    }
+    char ret[N+1][N+1];
+    for(int i=0;i<N+1;i++) {
+        for(int j=0;j<N+1;j++) {
+            ret[i][j] = (i==j)? 'B' : '?';
+        }
+    }
+
+    for(int t=0;t<K;t++) {
+        for(int i = 1; i<N+1; i++) {
+            bool transit = false;
+            for(int j=i+1; j<N+1;j++) {
+             //  log(i,j,paper[t][i], paper[t][j]);
+                if (  paper[t][j-1] > paper[t][j] ) {
+                    transit = true;
+                }
+                if ( transit) {
+                    //j is more senior
+                    string x = paper[t][i];
+                    string y = paper[t][j];
+                    ret[index[y]][index[x]] = '1';
+                    ret[index[x]][index[y]] = '0';
+                    //log(t,i,j,x, y);
+                    //transit = true;
+                }
+                
+            }
+        }
+    }
+    for (int i=1;i<N+1;i++) {
+        for (int j=1;j<N+1;j++) {
+            cout<<ret[i][j];
+        }
+        cout<<endl;
+    }
+
+}
