@@ -50,26 +50,37 @@ int main() {
 }
 
 /*
-public static void main(String[] args) throws IOException {
-        BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
-        String correct = in.readLine() + in.readLine() + in.readLine();
-        String guess = in.readLine() + in.readLine() + in.readLine();
-        int[] freqCorrect = new int[26];
-        int[] freqGuess = new int[26];
-        int green = 0;
-        for (int j = 0; j < 9; j++) {
-            if (correct.charAt(j) == guess.charAt(j)) {
-                green++;
-            }
-            freqCorrect[correct.charAt(j) - 'A']++;
-            freqGuess[guess.charAt(j) - 'A']++;
-        }
-        int yellow = 0;
-        for (int j = 0; j < 26; j++) {
-            yellow += Math.min(freqCorrect[j], freqGuess[j]);
-        }
-        yellow -= green;
-        System.out.println(green);
-        System.out.println(yellow);
+void solve() {
+  string s[3];
+  cin>>s[0]>>s[1]>>s[2];
+  string r[3];
+  cin>>r[0]>>r[1]>>r[2];
+  int countA[26], countB[26];
+  for(int i=0;i<26;i++)  {
+    countA[i]=0;
+    countB[i]=0;
+  }
+  int green=0, yellow=0;
+  for(int i=0;i<3;i++) {
+    for(int j=0;j<3;j++) {
+      if (s[i][j] == r[i][j]) {
+        green++;
+      }
+      else {
+        countA[s[i][j]-'A']++;
+        countB[r[i][j]-'A']++;
+      }
     }
+  }
+
+  for(int i=0;i<26;i++) {
+    if (countB[i] > 0 && countA[i] > 0) {
+      yellow += min(countB[i], countA[i]);
+    }
+  }
+  
+  cout<<green<<endl;
+  cout<<yellow<<endl;
+}
+ 
 */
