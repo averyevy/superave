@@ -40,6 +40,47 @@ void err(istream_iterator<string> it, T a, Args... args) {
 	err(++it, args...);
 }
 
+
+
+void solve2() {
+  int n;
+	cin >> n;
+  string s1,s2,s3,s4;
+  cin>>s1>>s2>>s3>>s4;
+ // cout<<s1<<endl<<s2<<endl<<s3<<endl<<s4<<endl;
+
+  set<string> words;
+  for(int i1=0; i1<7;i1++) {
+    for(int i2=0; i2<7;i2++) {
+      for(int i3=0; i3<7;i3++) {
+        for(int i4=0; i4<7;i4++) {
+            string s;
+            if (i1 < 6)  s +=  s1[i1];
+            if (i2 < 6)  s +=  s2[i2];
+            if (i3 < 6)  s +=  s3[i3];
+            if (i4 < 6)  s +=  s4[i4];
+            if (s.length() >=1) {
+              sort(s.begin(), s.end());
+              words.insert(s);
+            }
+            
+        }
+      }
+    }
+  }
+  //for (auto s: words){ cout<<s<<endl;}
+  
+  for (int i=0;i<n;i++) {
+    string t;
+    cin>>t;
+    sort(t.begin(),t.end());
+    cout<< ((words.count(t) >0 ) ? "YES" : "NO");
+    if (i<n-1) cout<<endl;
+  }
+  
+  
+}
+
 bool solve(array<string, 4> blocks) {
     string word;
     cin >> word;
