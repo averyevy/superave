@@ -57,6 +57,10 @@ void solve() {
 
     while(true) {
         bool foundIfStatement = false;
+	    /* focus on the iteration of the run. Everytime it tried to mark the 
+             if (inputs[bit]) then return val
+             
+	    */
         for(int bit = 0; bit < n; bit ++) {
             if (foundIfStatement) break;
             for (int val = 0; val<= 1; val++) {
@@ -65,6 +69,7 @@ void solve() {
                     if (foundIfStatement) break;
                     bool consistent = true;
                     bool atLeastOneinput = false;
+	             /* check all the inputs consist with this inputs combination 0->1,  1->1 */		
                     for(int tc = 0; tc < m; tc++) {
                         if ( tcPassed[tc] ) continue;
                         if (inputs[tc][bit] == '0' + val) {
