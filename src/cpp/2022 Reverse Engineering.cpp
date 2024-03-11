@@ -73,6 +73,7 @@ void solve() {
                     for(int tc = 0; tc < m; tc++) {
                         if ( tcPassed[tc] ) continue;
                         if (inputs[tc][bit] == '0' + val) {
+		            /* to ensure there's one matching this if statement. */		
                             atLeastOneinput = true;
                             if (outputs[tc] != '0' + output) {
                                 consistent = false;
