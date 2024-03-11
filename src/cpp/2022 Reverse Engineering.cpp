@@ -69,7 +69,7 @@ void solve() {
                     if (foundIfStatement) break;
                     bool consistent = true;
                     bool atLeastOneinput = false;
-	             /* check all the inputs consist with this inputs combination 0->1,  1->1 */		
+	             /* check all the inputs consist with this inputs combination */		
                     for(int tc = 0; tc < m; tc++) {
                         if ( tcPassed[tc] ) continue;
                         if (inputs[tc][bit] == '0' + val) {
