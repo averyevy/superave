@@ -58,7 +58,7 @@ void solve() {
     while(true) {
         bool foundIfStatement = false;
 	    /* focus on the iteration of the run. Everytime it tried to mark the 
-             if (inputs[bit]) then return val
+              if (input[bit] == val) return output;
              
 	    */
         for(int bit = 0; bit < n; bit ++) {
