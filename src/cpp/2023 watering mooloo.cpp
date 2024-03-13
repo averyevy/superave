@@ -12,16 +12,18 @@ void solve(){
     log(C[1]);
     for(ll i=2;i<=N;i++) {
         ll cost = C[i-1] + 1 + K;
-      //The key is A[i]-A[i-1] not A[i]-s since the C[i-1] may moved after already.
-        ll addon = C[i-1] + (A[i]-A[i-1]);
-        
+      //The key is A[i]-A[i-1] 
+       //or we always update the s when the new window start.s\ 
+        //ll addon = C[i-1] + (A[i]-A[i-1]);
+         ll addon = C[i-1] + (A[i]-s);
         if ( addon < cost ) {
             C[i] = addon;
-            s = A[i];
+           
         }
         else {
             C[i] = cost;
         }
+        s = A[i];
         log(C[i]);
     }
     cout<<C[N];
